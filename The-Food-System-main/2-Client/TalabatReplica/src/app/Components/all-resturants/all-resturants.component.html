@@ -1,0 +1,86 @@
+
+
+<div class="breadcrumb-section breadcrumb-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2 text-center">
+        <div class="breadcrumb-text">
+
+          <h1>All Resturant</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="searshContainer d-flex mt-5 m-auto justify-content-center">
+<input type="text"  class="searsh form-control w-50 text-center " #name [(ngModel)]="SearchTerm" (keyup)="SearchRes(SearchTerm)" placeholder="search by resturant" >
+<label for="" class="label label-default   "><button class="btn btn-outline-dark" (click)="GetResByName(name.value)" > <i class="fas fa-search"></i>  </button></label>
+</div>
+	<!-- ------------------------------------------------------------------------- -->
+
+          <div class="product-section  mt-5 mb-150">
+            <div class="container" >
+              <div class="row">
+                <div class="col-lg-2 col-md-3 col-sm-6 text-center strawberry mb-5 mt-5" *ngFor="let R of Restarunts">
+
+
+              <app-all-resturants-items   *ngIf="R; else spinner" [RestaurantItem]="R" ></app-all-resturants-items>
+
+
+            <!-- <app-all-resturants-items [RestaurantItem]="R" *ngFor="let R of Restarunts"></app-all-resturants-items> -->
+            </div>
+
+            <ng-template #spinner>
+              <app-spinner></app-spinner>
+            </ng-template>
+
+</div>
+</div>
+</div>
+<!-- ---------------------------------------------------------------------------- -->
+<div class="row mt-4" >
+  <div class="col-lg-12 text-center">
+    <div class="pagination-wrap " id="pagination">
+      <ul>
+        <li><a href="#">Prev</a></li>
+        <li><a href="#">1</a></li>
+        <li><a class="active" href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">Next</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- end products -->
+
+<!-- logo carousel -->
+<div class="logo-carousel-section">
+<div class="container">
+<div class="row">
+  <div class="col-lg-12">
+    <div class="logo-carousel-inner">
+      <div class="single-logo-item">
+        <img src="assets/img/company-logos/1.png" alt="">
+      </div>
+      <div class="single-logo-item">
+        <img src="assets/img/company-logos/2.png" alt="">
+      </div>
+      <div class="single-logo-item">
+        <img src="assets/img/company-logos/3.png" alt="">
+      </div>
+      <div class="single-logo-item">
+        <img src="assets/img/company-logos/4.png" alt="">
+      </div>
+      <div class="single-logo-item">
+        <img src="assets/img/company-logos/5.png" alt="">
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<!-- end logo carousel -->
+
+

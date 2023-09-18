@@ -1,0 +1,206 @@
+<div class="panar"></div>
+
+<div class="container {{in_or_up}} ">
+  <div class="forms-container">
+    <div class="signin-signup">
+
+      <form  class="sign-in-form"  autocomplete="off"  [formGroup]="loginEmailFormGroup" method="post">
+        <h2 class="title">Sign in</h2>
+
+        <div class="vlidation-container" *ngIf="foundErrorMessage">
+          <p class="text-danger m-3">{{errMss}}</p>
+      </div>
+
+        <div class="input-field">
+          <i class="fas fa-envelope"></i>
+          <input formControlName="UserEmailAddress" [ngClass]="{
+            'is-valid': loginEmailFormGroup.controls.UserEmailAddress.valid && (loginEmailFormGroup.controls.UserEmailAddress.dirty || loginEmailFormGroup.controls.UserEmailAddress.touched),
+            'is-invalid': loginEmailFormGroup.controls.UserEmailAddress.invalid && (loginEmailFormGroup.controls.UserEmailAddress.dirty || loginEmailFormGroup.controls.UserEmailAddress.touched)
+          }"
+           type="email" placeholder="Email" />
+        </div>
+
+
+
+        <div class="alert alert-danger mt-3" *ngIf="inValidEmail">
+          <p class=" m-1" >Invalid Email </p>
+      </div>
+
+        <div class="input-field">
+          <i class="fas fa-lock"></i>
+
+          <input formControlName="Password"
+           [ngClass]="{
+            'is-valid': loginEmailFormGroup.controls.Password.valid && (loginEmailFormGroup.controls.Password.dirty || loginEmailFormGroup.controls.Password.touched),
+            'is-invalid': loginEmailFormGroup.controls.Password.invalid && (loginEmailFormGroup.controls.Password.dirty || loginEmailFormGroup.controls.Password.touched)
+          }"
+          type="password" placeholder="Password" />
+        </div>
+        <div class="alert alert-danger mt-3" *ngIf="inValidPassword">
+          <p class=" m-1" >Incorrect Password</p>
+      </div>
+
+        <a href="forgetpassword" class="mt-3">Forgot Your Password?</a>
+
+        <span  class="mt-3">
+         
+          <input type="submit" value="Login" class="btn solid" (click)="LoginAction()"/>
+         
+          <input type="button" value="Sign up" class="btn solid ml-4" id="sign-up-btn" (click)="logup()"/>
+        
+        </span>
+
+    
+
+        <div class="alert alert-danger mt-3" *ngIf="checkinput">
+          <p id="requiremai"> Email is required</p>
+      </div>
+
+
+        <p class="social-text">Or Sign in with social platforms</p>
+        <div class="social-media">
+          <a href="https://www.facebook.com/" class="social-icon">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://twitter.com/" class="social-icon">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://mail.google.com/" class="social-icon">
+            <i class="fab fa-google"></i>
+          </a>
+          <a href="https://www.linkedin.com" class="social-icon">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </form>
+
+
+      <form  class="sign-up-form"  autocomplete="off"  [formGroup]="registerEmailFormGroup" method="post">
+        <h2 class="title">Sign up</h2>
+
+        <div class="vlidation-container" *ngIf="foundErrorMessage">
+          <p class="text-danger">{{errMss}}</p>
+      </div>
+
+        <div class="input-field">
+          <i class="fas fa-user"></i>
+          <input type="text" placeholder="FirstName"
+          formControlName="firstName" [ngClass]="{
+            'is-valid': registerEmailFormGroup.controls.firstName.valid && (registerEmailFormGroup.controls.firstName.dirty || registerEmailFormGroup.controls.firstName.touched),
+            'is-invalid': registerEmailFormGroup.controls.firstName.invalid && (registerEmailFormGroup.controls.firstName.dirty || registerEmailFormGroup.controls.firstName.touched)
+          }"
+
+          ></div>
+          <div class="alert alert-danger mt-3" *ngIf="validFirstName">
+            <p class=" m-1" >First Name is required</p>
+        </div>
+
+        <div class="input-field">
+          <i class="fas fa-user"></i>
+          <input type="text" placeholder="LastName"
+          formControlName="lastName" [ngClass]="{
+            'is-valid': registerEmailFormGroup.controls.lastName.valid && (registerEmailFormGroup.controls.lastName.dirty || registerEmailFormGroup.controls.lastName.touched),
+            'is-invalid': registerEmailFormGroup.controls.lastName.invalid && (registerEmailFormGroup.controls.lastName.dirty || registerEmailFormGroup.controls.lastName.touched)
+          }" />
+        </div>
+
+        <div class="input-field">
+          <i class="fas fa-user"></i>
+          <input type="text" placeholder="Username"
+          formControlName="username" [ngClass]="{
+            'is-valid': registerEmailFormGroup.controls.username.valid && (registerEmailFormGroup.controls.username.dirty || registerEmailFormGroup.controls.username.touched),
+            'is-invalid': registerEmailFormGroup.controls.username.invalid && (registerEmailFormGroup.controls.username.dirty || registerEmailFormGroup.controls.username.touched)
+          }"/>
+        </div>
+
+        <div class="alert alert-danger mt-3" *ngIf="validUserName">
+          <p class=" m-1" >Enter Correct UserName</p>
+      </div>
+
+        <div class="input-field">
+          <i class="fas fa-envelope"></i>
+          <input type="email" placeholder="Email"
+          formControlName="EmailAddress" [ngClass]="{
+            'is-valid': registerEmailFormGroup.controls.EmailAddress.valid && (registerEmailFormGroup.controls.EmailAddress.dirty || registerEmailFormGroup.controls.EmailAddress.touched),
+            'is-invalid': registerEmailFormGroup.controls.EmailAddress.invalid && (registerEmailFormGroup.controls.EmailAddress.dirty || registerEmailFormGroup.controls.EmailAddress.touched)
+          }"
+          />
+        </div>
+
+        <div class="alert alert-danger mt-3" *ngIf="ValidEmail">
+          <p class=" m-1" >Invalid Email Format ..... <br>email must take format user@example.com</p>
+      </div>
+
+        <div class="input-field">
+          <i class="fas fa-lock"></i>
+          <input type="password" placeholder="Password"
+          formControlName="Password" 
+          [ngClass]="{
+            'is-valid': registerEmailFormGroup.controls.Password.valid && (registerEmailFormGroup.controls.Password.dirty || registerEmailFormGroup.controls.Password.touched) ,
+            'is-invalid': registerEmailFormGroup.controls.Password.invalid && (registerEmailFormGroup.controls.Password.dirty || registerEmailFormGroup.controls.Password.touched) 
+          }"
+           />
+        </div>
+
+        <div class="alert alert-danger"  *ngIf="validPassword">
+          <p class="m-1">password is required</p>
+        </div>
+
+        <div  id="d1" class="alert alert-danger m-1" *ngIf="Password.hasError('pattern') || Password.dirty ">
+          <p class="m-1">. At least 8 characters long<br>
+            . Contains at least one uppercase letter<br>
+            . Contains at least one lowercase letter<br>
+            . Contains at least one number</p>
+        </div>
+       <span >
+        <input 
+        formControlName="AdminCheck" 
+        [ngClass]="{
+          'is-valid': registerEmailFormGroup.controls.AdminCheck.valid && (registerEmailFormGroup.controls.AdminCheck.dirty || registerEmailFormGroup.controls.AdminCheck.touched) ,
+          'is-invalid': registerEmailFormGroup.controls.AdminCheck.invalid && (registerEmailFormGroup.controls.AdminCheck.dirty || registerEmailFormGroup.controls.AdminCheck.touched) 
+        }"
+        type="checkbox" id="Admin"><label for="Admin" style="font-size: larger; font-weight: bold;">Admin</label>
+       </span>
+
+       <span class="mt-3">
+
+         <input type="submit" class="btn solid" value="Sign up" (click)="RegisterAction()"/>
+         
+         <input type="button" class="btn solid ml-3" value="Sign in" (click)="login()"/>
+         
+        </span>
+
+        <p class="social-text">Or Sign up with social platforms</p>
+        <div class="social-media">
+          <a href="https://www.facebook.com/" class="social-icon">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://twitter.com/" class="social-icon">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://mail.google.com/" class="social-icon">
+            <i class="fab fa-google"></i>
+          </a>
+          <a href="https://www.linkedin.com" class="social-icon">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="panels-container">
+    <div class="panel left-panel">
+      <div class="content">
+
+      </div>
+      <img src="assets/img/login/log.svg" class="image" alt="" />
+    </div>
+    <div class="panel right-panel">
+      <div class="content">
+
+      </div>
+      <img src="assets/img/login/register.svg" class="image" alt="" />
+    </div>
+  </div>
+</div>

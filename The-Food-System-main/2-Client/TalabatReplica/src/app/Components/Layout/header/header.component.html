@@ -1,0 +1,181 @@
+
+<div class="cont">
+
+
+
+
+	<!--PreLoader-->
+  <div class="loader">
+    <div class="loader-inner">
+        <div class="circle"></div>
+    </div>
+</div>
+<!--PreLoader Ends-->
+
+<!-- header -->
+
+<div class="top-header-area" id="sticker">
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 col-sm-12 text-center">
+      <div class="main-menu-wrap">
+
+        <!-- logo -->
+
+
+        <div class="site-logo">
+          <a href="index.html">
+            <img src="assets/img/Asset 1.png" alt="">
+          </a>
+        </div>
+
+
+        <!-- logo -->
+
+        <!-- menu start -->
+
+
+
+          <nav class="main-menu">
+            <ul>
+              <!-- <li class="current-list-item"><a href="#">Home</a>
+                <ul class="sub-menu">
+                  <li><a href="index.html">Static Home</a></li>
+                  <li><a href="index_2.html">Slider Home</a></li>
+                </ul>
+              </li> -->
+              <li ><a  routerLink="/AllResturants">All Resturant</a>
+                <li ><a  routerLink="/cart">Cart</a>
+              <!-- <li><a routerLink="/news.html">News</a> -->
+                <!-- <ul class="sub-menu">
+                  <li><a routerLink="/news.html">News</a></li>
+                  <li><a routerLink="/single-news.html">Single News</a></li>
+                </ul> -->
+              </li>
+              <li><a routerLink="/contactus">Contact</a></li>
+              <li ><a id="Toggle" style="color:aliceblue" *ngIf = "usernameFlag" >Welcome, {{username}}!</a>
+
+                <li ><a id="Toggle" *ngIf="loginFlag;else logoutBlock" routerLink="/login">Login/Registration</a>
+
+
+              </li>
+              <!-- <li><a routerLink="/login" *ngIf="logoutFlag" (click)="logout()">LogOut</a>
+            </li> -->
+            <li>
+              <ng-template #logoutBlock>
+
+
+                  <a routerLink="/login" (click)="logout()">LogOut</a>
+
+            </ng-template>
+            </li>
+              <li>
+
+
+                <!-- <ng-template #loginBlock>
+
+                  <li><a id="Toggle" routerLink="/login" >Login/Registration</a>
+                  </li>
+              </ng-template> -->
+
+
+
+                <div class="sidebar-nav">
+                  <nav >
+                      <div class="header-icons">
+                        <header>
+                          <!-- cart Toggle Button -->
+                          <button  type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                            <span class="shopping navbar-toggler-icon bi bi-cart">
+                              <img class="w-100" src="assets/img/carticon/1524618.png">
+                              <span class="quantity">{{this.castservice.dishesInCart.length}}</span>
+                            </span>
+                          </button>
+                        </header>
+
+                          <!-- List content -->
+                          <div  class="offcanvas offcanvas-start shadow" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                            <div class="offcanvas-body">
+
+                              <div class="  mt-3 row Justify-content-center align-items-start" >
+
+
+                                <div class="col-12 row cont " *ngFor=" let item of this.castservice.dishesInCart ;">
+                                  <img src="assets/img/abt.jpg" alt="" class=" col-4  im" >
+                                  <button class="btn btn-dark col-1  " style="height: 35px;" (click)="minsAmount(item)" >-</button>
+                                  <input type="number" class="form-control num col-2 " [(ngModel)]="item.quantity"   value = "{{item.quantity}}" >
+                                  <button class="btn btn-dark  col-1 " style="height: 35px;" (click)="addAmount(item)" >+</button>
+                                  <p  class=" col-1 price mt-1  "  [(ngModel)] = "pricequentity"   >{{ item.price * item.quantity }}$</p>
+
+                                  </div>
+                                <div class="col-12 row totalPrice" >
+                                <!-- Total Price : {{    total   }}$ -->
+                                </div>
+                              </div>
+
+                            </div>
+                          </div>
+                      </div>
+                  </nav>
+                </div>
+
+              </li>
+
+
+          <a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+          <div class="mobile-menu"></div>
+
+
+        <!-- menu end -->
+
+
+
+
+
+
+
+<!-- end header -->
+
+<!-- search area -->
+
+
+
+ <div class="search-area">
+<div class=" ">
+  <div class="row">
+    <div class="col-lg-12">
+      <span class="close-btn"><i class="fas fa-window-close"></i></span>
+      <div class="search-bar">
+        <div class="search-bar-tablecell">
+          <h3>Search For:</h3>
+          <input type="text" placeholder="Keywords">
+          <button type="submit">Search <i class="fas fa-search"></i></button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- end search arewa -->
+
+
+<div class="sidebar {{hidde}}  {{visabl}}">
+
+  <a href="#">Home</a>
+  <a href="#">About</a>
+  <a href="#">Contact</a>
+
+  <input type="button" value="Close" style="margin-top: 30rem;" (click)="hidden()">
+</div>
+
+
+
+
+
+
+
+
+

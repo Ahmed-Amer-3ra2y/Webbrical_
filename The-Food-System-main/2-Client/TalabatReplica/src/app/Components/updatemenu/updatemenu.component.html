@@ -1,0 +1,161 @@
+
+<div class="panar"></div>
+<div class="panar"  style="z-index:50000000 ;"  ></div>
+<div class="container ml-3">
+    <div class=" mx-auto justify-content-center  col-lg-10">
+        <div class="checkout-accordion-wrap">
+          <div *ngIf="itemdetails; else spinner"  class="accordion" id="accordionExample">
+            <div *ngIf="cate" class="card single-accordion">
+              <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  Edit Menu Item
+                  </button>
+                </h5>
+              </div>
+              <form [formGroup]="myValidations">
+              <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionExample">
+              <div class="card-body">
+
+                <label class="block text-sm">
+                  <span class="text-gray-700 dark:text-gray-400">title</span>
+                  <input value="{{itemdetails.name}}" #name formControlName="title"
+                  [ngClass]="{
+                    'is-valid': myValidations.controls['title'].valid && (myValidations.controls['title'].dirty || myValidations.controls['title'].touched),
+                    'is-invalid': myValidations.controls['title'].invalid && (myValidations.controls['title'].dirty || myValidations.controls['title'].touched)
+                  }"
+
+                    class="form-control block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                    placeholder="Jane Doe"
+                  />
+                </label>
+                <span class="text-danger text-center mx-5" *ngIf="myValidations.controls['title'].dirty && myValidations.hasError('required','title')">  *Title is Required </span>
+                <span class="text-danger text-center mx-5" *ngIf="myValidations.controls['title'].dirty && myValidations.hasError('maxlength','title')">  *Title must be less than 50 character </span>
+                <span class="text-danger text-center mx-5" *ngIf="myValidations.controls['title'].dirty && myValidations.hasError('pattern','title')">  *Title can not contain numbers </span>
+
+                <input #itemid type="hidden"  value="{{itemdetails.itemID}}"  class="form-control" required>
+
+
+                <label class="block text-sm">
+                  <span class="text-gray-700 dark:text-gray-400">price</span>
+                  <input
+                  #price value="{{itemdetails.price}}"
+                  formControlName="price"
+                  [ngClass]="{
+                    'is-valid': myValidations.controls['price'].valid && (myValidations.controls['price'].dirty || myValidations.controls['price'].touched),
+                    'is-invalid': myValidations.controls['price'].invalid && (myValidations.controls['price'].dirty || myValidations.controls['price'].touched)
+                  }"
+
+                    class="form-control block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                    placeholder="Jane Doe"
+                  />
+                </label>
+                <span class="text-danger text-center mx-5" *ngIf="myValidations.controls['price'].dirty && myValidations.hasError('required','price')">  *Price is Required </span>
+                <span class="text-danger text-center mx-5" *ngIf="myValidations.controls['price'].dirty && myValidations.hasError('pattern','price')">  *Price must be numbers </span>
+
+                <label class="block text-sm">
+                  <span class="text-gray-700 dark:text-gray-400">Size</span>
+                  <input
+                  #size value="{{itemdetails.size}}" formControlName="size"
+                  [ngClass]="{
+                    'is-valid': myValidations.controls['size'].valid && (myValidations.controls['size'].dirty || myValidations.controls['size'].touched),
+                    'is-invalid': myValidations.controls['size'].invalid && (myValidations.controls['size'].dirty || myValidations.controls['size'].touched)
+                  }"
+                    class="form-control block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                    placeholder="Jane Doe"
+                  />
+                </label>
+                <span class="text-danger text-center mx-5" *ngIf="myValidations.controls['size'].dirty && myValidations.hasError('required','size')">  *Size is Required </span>
+                <span class="text-danger text-center mx-5" *ngIf="myValidations.controls['size'].dirty && myValidations.hasError('pattern','size')">  *Size must be [L-M-S-l-m-s] </span>
+
+                <input type="hidden"
+                  #ResID  value="{{itemdetails.resturantID}}"
+                     />
+
+
+                <label class="block mt-4 text-sm">
+                  <span class="text-gray-700 dark:text-gray-400">
+                    catigorys
+                  </span>
+                  <select #catigorys
+                    class="form-control block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                  >
+                  <option value="{{itemdetails.categoryID}}" selected>{{cate.name}}</option>
+                    <option  *ngFor="let c of Category" value="{{+c.categoryID}}">{{c.name}}</option>
+
+
+                  </select>
+                </label>
+
+
+
+
+                <label class="block mt-4 text-sm">
+                  <span class="text-gray-700 dark:text-gray-400">description</span>
+                  <textarea #description value="{{itemdetails.description}}"
+                  formControlName="desc"
+                  [ngClass]="{
+                    'is-valid': myValidations.controls['desc'].valid && (myValidations.controls['desc'].dirty || myValidations.controls['desc'].touched),
+                    'is-invalid': myValidations.controls['desc'].invalid && (myValidations.controls['desc'].dirty || myValidations.controls['desc'].touched)
+                  }"
+                    class="form-control block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                    rows="3"
+                    placeholder="Enter some long form content."
+                  ></textarea>
+                </label>
+                <span class="text-danger text-center mx-5" *ngIf="myValidations.controls['desc'].dirty && myValidations.hasError('required','desc')">  *Description is Required </span>
+
+
+                <label class="block text-sm">
+                  <span class="text-gray-700 dark:text-gray-400">Img</span>
+                  <input   value="{{itemdetails.image.name}}"
+
+
+                   (change)="SelectedFile($event)" type="file"
+                    class="form-control block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                    placeholder="Jane Doe"
+                  />
+                </label>
+                <label class="block text-sm my-3">
+
+                  <input type="checkbox" formControlName="top" #IsTop style="accent-color: chocolate;"/>
+                  <span class="text-gray-700 dark:text-gray-400 mx-2 font-bold">Top Dish</span>
+                </label>
+
+                <label class="block text-sm my-3">
+
+                  <input type="checkbox" formControlName="off" #Offer style="accent-color: chocolate;"/>
+                  <span class="text-gray-700 dark:text-gray-400 mx-2 font-bold">IS Offer</span>
+                </label>
+
+
+                <div class="px-6 my-6">
+
+
+
+                    <div class="modal-footer">
+                        <input type="button"  class="btn btn-default" data-dismiss="modal" value="Cancel">
+                        <input type="submit"  (click)="updateItem(itemid.value,name.value,+price.value,description.value,size.value,IsTop.checked,+ResID.value,Offer.checked,+catigorys.value)" class="btn btn-info" value="Save">
+                      </div>
+                </div>
+                </div>
+
+
+              </div>
+              </form>
+            </div>
+
+
+
+          </div>
+        </div>
+      </div>
+
+</div>
+
+
+<<ng-template #spinner>
+  <app-spinner></app-spinner>
+</ng-template>
+
+

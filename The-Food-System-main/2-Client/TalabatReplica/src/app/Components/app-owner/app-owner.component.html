@@ -1,0 +1,295 @@
+<div class="panar"></div>
+<div class="panar" style="z-index: 50000000"></div>
+
+<!-- Desktop sidebar -->
+
+<!-- Mobile sidebar -->
+<!-- Backdrop -->
+<div class="">
+  <header class="z-10 py-4 bg-white shadow-md dark:bg-gray-800">
+    <div
+      class="container flex items-center w-100 justify-between h-full px-6 mx-auto text-purple-600 dark:text-purple-300"
+    >
+      <!-- Mobile hamburger -->
+      <button
+        class="p-1 -ml-1 mr-5 rounded-md md:hidden focus:outline-none focus:shadow-outline-purple"
+        aria-label="Menu"
+      >
+        <svg
+          class="w-6 h-6"
+          aria-hidden="true"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+            clip-rule="evenodd"
+          ></path>
+        </svg>
+      </button>
+
+
+    </div>
+  </header>
+
+  <!-- CTA -->
+
+  <!-- <div class="checkout-section "> -->
+  <div class="container mt-3"></div>
+  <!-- </div> -->
+
+  <!-- General elements -->
+
+  <!-- /////////////////////////////////////////////////// -->
+
+  <div class="row">
+
+    <div class="mx-auto justify-content-center mt-2 col-lg-10" >
+      <div class="checkout-accordion-wrap">
+        <div class="accordion" id="accordionExample3">
+          <div class="card single-accordion">
+            <div class="card-header" id="headingThree3">
+              <h5 class="mb-0">
+                <button
+                  class="btn btn-link collapsed"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#collapseThree3"
+                  aria-expanded="false"
+                  aria-controls="collapseThree3"
+                  (click)="LoadResAdminRequests()"
+                >
+                  Restaurant admin requests
+                </button>
+              </h5>
+            </div>
+            <div
+              id="collapseThree3"
+              class="collapse"
+              aria-labelledby="headingThree3"
+              data-parent="#accordionExample3"
+            >
+              <div class="card-body" *ngIf="allresAdmins">
+           <!--table begin-->
+           <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+
+                <th>Email</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Actions</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr #row *ngFor="let c of allresAdmins" >
+
+     <td >{{c.email}}</td>
+    <td>{{c.firstName}}</td>
+    <td>{{c.lastName}}</td>
+
+                <td>
+                <a
+
+                    class="edit"
+                    data-toggle="modal"
+                    routerLink="/ResAdminUpdate/{{c.id}}"
+                  >
+                    <i class="material-icons" data-toggle="tooltip" title="Edit"
+                      >&#xE254;</i
+                    >
+                    </a
+                  >
+                  <a
+                    class="delete"
+                    data-toggle="modal"
+                    (click)="Delete(c.id,row)"
+                  >
+                    <i class="material-icons" data-toggle="tooltip" title="Delete"
+                      >&#xE872;</i
+                    > </a
+                  >
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="mx-auto justify-content-center mt-2 mb-2 col-lg-10" >
+      <div class="checkout-accordion-wrap">
+        <div class="accordion" id="accordionExample2">
+          <div class="card single-accordion">
+            <div class="card-header" id="headingThree2">
+              <h5 class="mb-0">
+                <button
+                  class="btn btn-link collapsed"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#collapseThree2"
+                  aria-expanded="false"
+                  aria-controls="collapseThree2"
+                  
+                >
+                  Restaurant Requests
+                </button>
+              </h5>
+            </div>
+            <div
+              id="collapseThree2"
+              class="collapse"
+              aria-labelledby="headingThree2"
+              data-parent="#accordionExample2"
+            >
+              <div class="card-body" >
+           <!--table begin-->
+           <table class="table table-striped table-hover" >
+            <thead>
+              <tr>
+                <th></th>
+                <th>Name</th>
+                <th>discription</th>
+                <th>Location</th>
+
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody *ngIf="allRestaurant">
+              <tr #row *ngFor="let i of allRestaurant">
+                <td></td>
+                <td>{{ i.name }}</td>
+                <td>{{ i.description }}</td>
+                <td>{{ i.location }}</td>
+
+                <td>
+                  <a
+                    routerLink="/AcceptRes/{{i.restaurantID}}"
+                    class="edit"
+                    data-toggle="modal"
+                  >
+                    <i class="material-icons" data-toggle="tooltip" title="Edit"
+                      >&#xE254;</i
+                    ></a
+                  >
+                  <a
+                    (click)="DeleteRestaurant(i.restaurantID, row)"
+                    class="delete"
+                    data-toggle="modal"
+                  >
+                    <i class="material-icons" data-toggle="tooltip" title="Delete"
+                      >&#xE872;</i
+                    ></a
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="alert alert-danger text-center" *ngIf="!allRestaurant">
+            No requests Found
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mx-auto justify-content-center mt-2 mb-2 col-lg-10" >
+      <div class="checkout-accordion-wrap">
+        <div class="accordion" id="accordionExample2">
+          <div class="card single-accordion">
+            <div class="card-header" id="headingThree2">
+              <h5 class="mb-0">
+                <button
+                  class="btn btn-link collapsed"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#collapseThree2"
+                  aria-expanded="false"
+                  aria-controls="collapseThree2"
+                  (click)="LoadMenuItemRequests()"
+                >
+                  Product Requests
+                </button>
+              </h5>
+            </div>
+            <div
+              id="collapseThree2"
+              class="collapse"
+              aria-labelledby="headingThree2"
+              data-parent="#accordionExample2"
+            >
+              <div class="card-body" >
+           <!--table begin-->
+           <table class="table table-striped table-hover" >
+            <thead>
+              <tr>
+                <th></th>
+                <th>title</th>
+                <th>discription</th>
+                <th>price</th>
+
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody *ngIf="allMenauitems">
+              <tr #row *ngFor="let i of allMenauitems">
+                <td></td>
+                <td>{{ i.name }}</td>
+                <td>{{ i.description }}</td>
+                <td>{{ i.price }}</td>
+
+                <td>
+                  <a
+                    routerLink="/AcceptMenuItem/{{ i.itemID }}"
+                    class="edit"
+                    data-toggle="modal"
+                  >
+                    <i class="material-icons" data-toggle="tooltip" title="Edit"
+                      >&#xE254;</i
+                    ></a
+                  >
+                  <a
+                    (click)="DeleteMenuItem(i.itemID, row)"
+                    class="delete"
+                    data-toggle="modal"
+                  >
+                    <i class="material-icons" data-toggle="tooltip" title="Delete"
+                      >&#xE872;</i
+                    ></a
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="alert alert-danger text-center" *ngIf="!allMenauitems">
+            No requests Found
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+      </div>
+    </div>
+
+
+
+

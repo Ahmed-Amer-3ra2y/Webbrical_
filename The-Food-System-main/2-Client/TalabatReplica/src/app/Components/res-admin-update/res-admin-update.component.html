@@ -1,0 +1,106 @@
+<div class="panar"></div>
+<div class="panar"  style="z-index:50000000 ;"  ></div>
+<div class="container ml-3">
+    <div class=" mx-auto justify-content-center  col-lg-10" *ngIf="itemdetails">
+        <div class="checkout-accordion-wrap">
+          <div   class="accordion" id="accordionExample">
+            <div class="card single-accordion">
+              <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  Resturant Admin Requests
+                  </button>
+                </h5>
+              </div>
+              <form [formGroup]="myValidations">
+              <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionExample">
+              <div class="card-body">
+                <input #itemid type="hidden" formControlName="id"    class="form-control" required>
+
+                <label class="block text-sm">
+                  <span class="text-gray-700 dark:text-gray-400">email</span>
+                  <input readonly value="{{itemdetails.email}}" #email formControlName="email"
+                  [ngClass]="{
+                    'is-valid': myValidations.controls['email'].valid && (myValidations.controls['email'].dirty || myValidations.controls['email'].touched),
+                    'is-invalid': myValidations.controls['email'].invalid && (myValidations.controls['email'].dirty || myValidations.controls['email'].touched)
+                  }"
+                    class="form-control block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                    placeholder="Jane Doe"
+                  />
+                </label>
+
+                <span class="text-danger text-center mx-5" *ngIf="myValidations.controls['email'].dirty && myValidations.hasError('required','email')"> *email is Required </span>
+                <span class="text-danger text-center mx-5" *ngIf="myValidations.controls['email'].dirty && myValidations.hasError('email','email')">  *email not valid </span>
+
+
+
+                <label class="block text-sm">
+                  <span class="text-gray-700 dark:text-gray-400">First Name</span>
+                  <input
+                  readonly
+                  #price value="{{itemdetails.firstName}}"
+                  formControlName="firstName"
+                  [ngClass]="{
+                    'is-valid': myValidations.controls['firstName'].valid && (myValidations.controls['firstName'].dirty || myValidations.controls['firstName'].touched),
+                    'is-invalid': myValidations.controls['firstName'].invalid && (myValidations.controls['firstName'].dirty || myValidations.controls['firstName'].touched)
+                  }"
+
+                    class="form-control block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                    placeholder="Jane Doe"
+                  />
+                </label>
+                <span class="text-danger text-center mx-5" *ngIf="myValidations.controls['firstName'].dirty && myValidations.hasError('required','firstName')">  *firstName is Required </span>
+
+
+                <label class="block text-sm">
+                  <span class="text-gray-700 dark:text-gray-400">lastName</span>
+                  <input
+                  readonly
+                  #size value="{{itemdetails.lastName}}" formControlName="lastName"
+                  [ngClass]="{
+                    'is-valid': myValidations.controls['lastName'].valid && (myValidations.controls['lastName'].dirty || myValidations.controls['lastName'].touched),
+                    'is-invalid': myValidations.controls['lastName'].invalid && (myValidations.controls['lastName'].dirty || myValidations.controls['lastName'].touched)
+                  }"
+                    class="form-control block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                    placeholder="Jane Doe"
+                  />
+                </label>
+
+                <span class="text-danger text-center mx-5" *ngIf="myValidations.controls['lastName'].dirty && myValidations.hasError('required','lastName')">  *lastName is Required </span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div class="px-6 my-6">
+
+
+
+                    <div class="modal-footer">
+                        <input type="submit"  (click)="updateItem()" class="btn btn-info" value="Accept">
+                      </div>
+                </div>
+                </div>
+
+
+              </div>
+              </form>
+            </div>
+
+
+
+          </div>
+        </div>
+      </div>
+
+</div>

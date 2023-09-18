@@ -1,0 +1,137 @@
+<div class="panar"></div>
+<div class="panar"  style="z-index:50000000 ;"  ></div>
+<div class="container ml-3">
+<div class="mx-auto justify-content-center mt-2 col-lg-10" >
+    <div class="checkout-accordion-wrap" >
+      <div class="accordion" id="accordionExample2" >
+        <div class="card single-accordion">
+          <div class="card-header" id="headingThree2">
+            <h5 class="mb-0">
+              <button
+                class="btn btn-link collapsed"
+                type="button"
+                data-toggle="collapse"
+                data-target="#collapseThree2"
+                aria-expanded="false"
+                aria-controls="collapseThree2"
+              >
+                Accept Resturant profile
+              </button>
+            </h5>
+          </div>
+          <div
+            id="collapseThree2"
+            class="collapse show"
+            aria-labelledby="headingThree2"
+            data-parent="#accordionExample2"
+          >
+          <div class="card-body">
+            <form
+           [formGroup]="EditRestaurantValidations"
+              enctype="multipart/form-data"
+            >
+              <label class="block text-sm">
+                <span class="text-gray-700 dark:text-gray-400">name</span>
+                <input
+                  formControlName="Name"
+                  #name
+                  readonly
+                  value="{{ResData.name}}"
+                  class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                  placeholder="Restaurant name"
+                />
+              </label>
+
+
+              <label class="block text-sm">
+                <span class="text-gray-700 dark:text-gray-400"
+                  >Email Address</span
+                >
+                <input
+                  formControlName="EmailAddress"
+                  #emailadd
+                  readonly
+                  value="{{ResData.emailAddress}}"
+                  type="email"
+                  class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                  placeholder="Restaurant Emailaddress"
+                />
+              </label>
+
+
+               <label class="block text-sm">
+                <span class="text-gray-700 dark:text-gray-400"
+                  >Phone number</span
+                >
+                <input
+                  type="tel"
+                  #phonee
+                  readonly
+                  value="{{ResData.phoneNum}}"
+                  formControlName="phoneNum"
+                  class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                  placeholder="Restaurant phone number"
+                />
+              </label>
+
+
+              <label class="block text-sm">
+                <span class="text-gray-700 dark:text-gray-400"
+                  >location</span
+                >
+                <input
+                formControlName="Location"
+                #location
+                readonly
+                value="{{ResData.location}}"
+                  type="text"
+                  class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                  placeholder="Restaurant location"
+                />
+              </label>
+
+              <label class="block mt-4 text-sm">
+                <span class="text-gray-700 dark:text-gray-400"
+                  >discription</span
+                >
+                <textarea
+                value="{{ResData.description}}"
+                formControlName="Description"
+                #desc
+                readonly
+                  class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                  rows="3"
+                  placeholder="Enter some long form content."
+                ></textarea>
+              </label>
+
+
+              <label class="block text-sm">
+                <span class="text-gray-700 dark:text-gray-400"
+                  >profile photo</span
+                >
+
+                <img #imageposter src="data:image/jpg;base64 , {{ResData.poster}}" >
+
+              </label>
+
+
+              <label class="block text-sm">
+                <span class="text-gray-700 dark:text-gray-400"
+                  >paner photo</span
+                >
+
+                <img #imagepanner src="data:image/jpg;base64 , {{ResData.coverBanner}}" >
+              </label>
+
+            <div class="modal-footer">
+                <input type="submit" (click)="updateRes(location.value,name.value,desc.value,emailadd.value,phonee.value,true)"  class="btn btn-info" value="Accept">
+              </div>
+            </form>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

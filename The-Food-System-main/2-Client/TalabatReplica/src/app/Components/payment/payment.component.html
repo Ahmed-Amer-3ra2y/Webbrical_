@@ -1,0 +1,58 @@
+
+<!--PreLoader-->
+<div class="loader">
+  <div class="loader-inner">
+      <div class="circle"></div>
+  </div>
+</div>
+<!--PreLoader Ends-->
+
+
+
+  <!-- search area -->
+  <div class="search-area">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-12">
+                  <span class="close-btn"><i class="fas fa-window-close"></i></span>
+                  <div class="search-bar">
+                      <div class="search-bar-tablecell">
+                          <h3>Search For:</h3>
+                          <input type="text" placeholder="Keywords">
+                          <button type="submit">Search <i class="fas fa-search"></i></button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- end search arewa -->
+  <!-- breadcrumb-section -->
+  <div class="breadcrumb-section breadcrumb-bg">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-8 offset-lg-2 text-center">
+                  <div class="breadcrumb-text">
+                      <h1>Choose Way To Pay</h1>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- end breadcrumb section -->
+<div class="paypal-container text-center ">
+
+  <div class="amount" style="margin-top: 30px; margin-bottom: 30px;">Total amount to pay: ${{amount}}</div>
+
+  <div class="info">Please do not refresh the browser while the transact
+
+  <div #paymentRef></div>
+
+
+  <!-- <div class="back" (click)="cancel()">Cancel</div> -->
+
+  <button id="cancle" class="btn btn-outline-dark mt-3 mb-3 w-25" (click)="cancel()"><a class="text-decoration-none"> Cancel</a></button>
+
+  
+  </div>
+
